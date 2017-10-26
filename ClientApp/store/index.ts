@@ -1,12 +1,10 @@
 import { reducer as formReducer } from 'redux-form'
 import * as WeatherForecasts from './WeatherForecasts';
-import * as Counter from './Counter';
-import * as Customer from './Customer';
+import * as Customer from './customers';
 
 
 // The top-level state object
 export interface ApplicationState {
-    counter: Counter.CounterState;
     weatherForecasts: WeatherForecasts.WeatherForecastsState;
     customer: Customer.CustomerState;
     form: {}
@@ -16,7 +14,6 @@ export interface ApplicationState {
 // the reducer with the matching name. It's important that the names match exactly, and that the reducer
 // acts on the corresponding ApplicationState property type.
 export const reducers = {
-    counter: Counter.reducer,
     weatherForecasts: WeatherForecasts.reducer,
     customer: Customer.reducer,
     form: formReducer,

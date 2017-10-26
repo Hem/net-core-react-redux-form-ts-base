@@ -1,4 +1,3 @@
-import { Customer } from '../store/Customer';
 import * as React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 

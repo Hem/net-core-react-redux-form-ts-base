@@ -1,9 +1,9 @@
-import { actionCreators as CustomerActions, Customer, CustomerState } from '../store/Customer';
-import { ApplicationState } from '../store';
 import * as React from 'react';
 import { ReactNode } from 'react-redux';
-import { connectForm } from './connect-wrapper'
 import { Field, FieldArray, reduxForm, InjectedFormProps, FormSection } from 'redux-form';
+import { connectForm } from '../connect-wrapper'
+import { ApplicationState } from '../../store';
+import { actionCreators as CustomerActions, Customer, CustomerState } from '../../store/customers';
 
 import { RouteComponentProps } from 'react-router-dom';
 import { ComponentType, StatelessComponent, ComponentClass, ReactElement } from 'react';
@@ -34,7 +34,7 @@ type PropDefs = RouteComponentProps<{}>
 
 class CustomerList extends React.Component<PropDefs, {}> {
 
-    onHandleSubmit(values) {
+    onHandleSubmit(values:any) {
         console.info("Values submitted", values);
     }
 

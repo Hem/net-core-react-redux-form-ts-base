@@ -1,6 +1,9 @@
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
+// this fixes an issue with redux-form and typescript
+// the issue is due to the name object.
+
 const defaultFormName = config => Component =>
   reduxForm({ form: Component.displayName || Component.name, ...config })(Component);
 
