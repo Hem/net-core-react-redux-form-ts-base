@@ -1,0 +1,7 @@
+{
+  "files.exclude": {
+    "bin": true,
+    "node_modules": false,
+    "obj": true
+  }
+}
