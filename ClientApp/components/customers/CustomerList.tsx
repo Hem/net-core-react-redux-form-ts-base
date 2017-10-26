@@ -1,3 +1,4 @@
+import { ConnectedTextField } from '../../common/fields/Index';
 import * as React from 'react';
 import { ReactNode } from 'react-redux';
 import { Field, FieldArray, reduxForm, InjectedFormProps, FormSection } from 'redux-form';
@@ -8,19 +9,19 @@ import { actionCreators as CustomerActions, Customer, CustomerState } from '../.
 import { RouteComponentProps } from 'react-router-dom';
 import { ComponentType, StatelessComponent, ComponentClass, ReactElement } from 'react';
 
-class RenderCustomers extends React.Component<{ fields: any[] }, {}> {
+class CustomerTBody extends React.Component<{ fields: any[] }, {}> {
     render() {
         const { fields } = this.props;
-        return (<table>
-            <tbody>
+        return (<tbody>
                 {fields.map((customer, index) => (
                     <tr key={index}>
-                        <td><Field name={`${customer}.firstName`} component="input" /></td>
-                        <td><Field name={`${customer}.lastName`} component="input" /></td>
+                        <td>
+                            <Field name={`${customer}.firstName`} component={ConnectedTextField} className="form-control" />
+                        </td>
+                        <td><Field name={`${customer}.lastName`} component="input"  className="form-control" /></td>
                     </tr>
                 ))}
-            </tbody>
-        </table>)
+            </tbody>)
     }
 }
 
@@ -57,8 +58,12 @@ class CustomerList extends React.Component<PropDefs, {}> {
             <h1>Customers</h1>
 
             <form onSubmit={handleSubmit(this.onHandleSubmit.bind(this))}>
-                <FieldArray name="customers" component={RenderCustomers} />
-                <button type="submit">Go Go Go</button>
+                <table className="table">
+                    <FieldArray name="customers" component={CustomerTBody} />
+                <tfoot>
+                    <button type="submit">Go Go Go</button>
+                </tfoot>
+                </table>
             </form>
         </div>
     }
