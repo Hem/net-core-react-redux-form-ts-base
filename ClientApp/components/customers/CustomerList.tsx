@@ -1,15 +1,16 @@
-import { RdxTextField } from '../../common/fields/Index';
 import * as React from 'react';
+import { ComponentType, StatelessComponent, ComponentClass, ReactElement } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 import { ReactNode } from 'react-redux';
 import { Field, FieldArray, reduxForm, InjectedFormProps, FormSection } from 'redux-form';
-import { connectForm } from '../connect-wrapper'
-import { ApplicationState } from '../../store';
-import { actionCreators as CustomerActions, Customer, CustomerState } from '../../store/customers';
 
-import { RouteComponentProps } from 'react-router-dom';
-import { ComponentType, StatelessComponent, ComponentClass, ReactElement } from 'react';
+import { ApplicationState } from '@src/store';
+import { RdxTextField } from '@src/common/fields';
+import { connectForm } from '@src/common/connect-wrapper'
+import { actionCreators as CustomerActions, Customer, CustomerState } from '@src/store/customers';
 
-class CustomerTBody extends React.Component<{ fields: any[] }, {}> {
+
+class CustomerRow extends React.Component<{ fields: any[] }, {}> {
     render() {
         const { fields } = this.props;
         return (<tbody>
@@ -59,7 +60,7 @@ class CustomerList extends React.Component<PropDefs, {}> {
 
             <form onSubmit={handleSubmit(this.onHandleSubmit.bind(this))}>
                 <table className="table">
-                    <FieldArray name="customers" component={CustomerTBody} />
+                    <FieldArray name="customers" component={CustomerRow} />
                 <tfoot>
                     <button type="submit">Go Go Go</button>
                 </tfoot>

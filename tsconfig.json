@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "paths": {
+      "@src/*": ["ClientApp/*"]
+    },
     "module": "es2015",
     "moduleResolution": "node",
     "target": "es5",

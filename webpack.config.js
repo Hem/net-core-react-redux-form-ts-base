@@ -10,7 +10,10 @@ module.exports = (env) => {
     // Configuration in common to both client-side and server-side bundles
     const sharedConfig = () => ({
         stats: { modules: false },
-        resolve: { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
+        resolve: {
+            extensions: ['.js', '.jsx', '.ts', '.tsx'],
+            alias: { '@src': path.resolve(__dirname, 'ClientApp'), },
+        },
         output: {
             filename: '[name].js',
             publicPath: 'dist/' // Webpack dev middleware, if enabled, handles requests for this URL prefix
@@ -47,14 +50,16 @@ module.exports = (env) => {
                 moduleFilenameTemplate: path.relative(clientBundleOutputDir, '[resourcePath]') // Point sourcemap entries to the original file locations on disk
             })
         ] : [
-            // Plugins that apply in production builds only
-            new webpack.optimize.UglifyJsPlugin()
-        ])
+                // Plugins that apply in production builds only
+                new webpack.optimize.UglifyJsPlugin()
+            ])
     });
 
     // Configuration for server-side (prerendering) bundle suitable for running in Node
     const serverBundleConfig = merge(sharedConfig(), {
-        resolve: { mainFields: ['main'] },
+        resolve: {
+            mainFields: ['main'],
+        },
         entry: { 'main-server': './ClientApp/boot-server.tsx' },
         plugins: [
             new webpack.DllReferencePlugin({
