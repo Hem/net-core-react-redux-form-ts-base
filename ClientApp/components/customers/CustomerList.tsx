@@ -1,4 +1,4 @@
-import { ConnectedTextField } from '../../common/fields/Index';
+import { RdxTextField } from '../../common/fields/Index';
 import * as React from 'react';
 import { ReactNode } from 'react-redux';
 import { Field, FieldArray, reduxForm, InjectedFormProps, FormSection } from 'redux-form';
@@ -16,7 +16,7 @@ class CustomerTBody extends React.Component<{ fields: any[] }, {}> {
                 {fields.map((customer, index) => (
                     <tr key={index}>
                         <td>
-                            <Field name={`${customer}.firstName`} component={ConnectedTextField} className="form-control" />
+                            <Field name={`${customer}.firstName`} component={RdxTextField} className="form-control" />
                         </td>
                         <td><Field name={`${customer}.lastName`} component="input"  className="form-control" /></td>
                     </tr>

@@ -3,7 +3,7 @@ import { Action, Reducer } from 'redux';
 import { fetch, addTask } from 'domain-task';
 
 import { AppThunkAction } from '../';
-import { CustomerState, DEFAULT_CUSTOMER_STATE } from './';
+import { CustomerState, DEFAULT_CUSTOMER_STATE } from './Contracts';
 
 // ===================
 // ACTION REDUCERS - These save the data to the state...

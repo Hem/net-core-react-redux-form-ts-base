@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 import { fetch, addTask } from 'domain-task';
 import { AppThunkAction } from '../';
-import { FilterParam, Customer, CustomerState } from './';
+import { FilterParam, Customer, CustomerState } from './Contracts';
 
 export interface RequestCustomersAction {
     type: 'REQUEST_CUSTOMERS';
